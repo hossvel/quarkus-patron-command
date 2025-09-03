@@ -1,8 +1,9 @@
 package com.hossvel.comand;
 
 import com.hossvel.model.Cocina;
+import jakarta.enterprise.context.ApplicationScoped;
 
-// ConcreteCommand
+
 public class OrdenPizza implements IOrdenComand {
 
     private Cocina cocina;

@@ -4,6 +4,7 @@ import com.hossvel.comand.IOrdenComand;
 import com.hossvel.comand.MeseroInvoker;
 import com.hossvel.comand.OrdenEnsalada;
 import com.hossvel.comand.OrdenPizza;
+import com.hossvel.factory.OrderFactory;
 import com.hossvel.model.Cocina;
 import com.hossvel.model.OrdenDTO;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -15,13 +16,16 @@ public class ServiceOrden implements IServiceOrden{
     @Inject
     MeseroInvoker meseroInvoker;
 
+    @Inject
+    OrderFactory orderFactory;
+
     @Override
     public Cocina ordenarPizza(OrdenDTO ordenDTO) {
+
         Cocina cocina = new Cocina(ordenDTO.cliente,ordenDTO.cantidad,false);
-        IOrdenComand iOrdenComand = new OrdenPizza(cocina);
 
         //agrega la orden
-        meseroInvoker.tomarOrden(iOrdenComand);
+        meseroInvoker.tomarOrden(orderFactory.create(cocina, ordenDTO.tipo));
         // ejecuta las ordenes
         meseroInvoker.enviarOrdenes();
 

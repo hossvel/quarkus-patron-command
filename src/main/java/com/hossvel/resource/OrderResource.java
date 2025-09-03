@@ -20,17 +20,11 @@ public class OrderResource {
     IServiceOrden iServiceOrden;
 
     @POST
-    @Path("/pizza")
-    public Response ordenarPizza(OrdenDTO ordenDTO) {
+    public Response ordenar(OrdenDTO ordenDTO) {
 
         return Response.status(Response.Status.CREATED).entity(iServiceOrden.ordenarPizza(ordenDTO)).build();
     }
 
-    @POST
-    @Path("/ensalada")
-    public Response ordenarEnsalada(OrdenDTO ordenDTO) {
 
-        return Response.status(Response.Status.CREATED).entity(iServiceOrden.ordenarEnsalada(ordenDTO)).build();
-    }
 
 }
