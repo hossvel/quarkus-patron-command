@@ -8,5 +8,4 @@ public interface IServiceOrden {
 
     public Cocina ordenarPizza(OrdenDTO ordenDTO);
 
-    public Cocina ordenarEnsalada(OrdenDTO ordenDTO);
 }

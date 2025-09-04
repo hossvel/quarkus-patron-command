@@ -33,17 +33,5 @@ public class ServiceOrden implements IServiceOrden{
         return cocina;
     }
 
-    @Override
-    public Cocina ordenarEnsalada(OrdenDTO ordenDTO) {
-        Cocina cocina = new Cocina(ordenDTO.cliente,ordenDTO.cantidad,false);
-        IOrdenComand iOrdenComand = new OrdenEnsalada(cocina);
 
-        //agrega la orden
-        meseroInvoker.tomarOrden(iOrdenComand);
-        // ejecuta las ordenes
-        meseroInvoker.enviarOrdenes();
-
-        cocina.setConfirmado(true);
-        return cocina;
-    }
 }
